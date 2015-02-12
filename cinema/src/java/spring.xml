@@ -8,13 +8,13 @@
           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
 ">
-    <bean id="actores" class="com.modelo.Actores" scope="prototype"></bean>
-    <bean id="boleta" class="com.modelo.Boleta" scope="prototype"></bean>
-    <bean id="cliente" class="com.modelo.Cliente" scope="prototype"></bean>
-    <bean id="funcion" class="com.modelo.Funcion" scope="prototype"></bean>
-    <bean id="pelicula" class="com.modelo.Pelicula" scope="prototype"></bean>
-    <bean id="puntoDeVenta" class="com.modelo.PuntoDeVenta" scope="prototype"></bean>
-    <bean id="sala" class="com.modelo.Sala" scope="prototype"></bean>
-    <bean id="sede" class="com.modelo.Sede" scope="prototype"></bean>
-    <bean id="silla" class="com.modelo.Silla" scope="prototype"></bean>
+    <bean id="actores" class="com.facade.ActoresFacade" scope="prototype"></bean>
+    <bean id="boleta" class="com.facade.BoletaFacade" scope="prototype"></bean>
+    <bean id="cliente" class="com.facade.ClienteFacade" scope="prototype"></bean>
+    <bean id="funcion" class="com.facade.FuncionFacade" scope="prototype"></bean>
+    <bean id="pelicula" class="com.facade.PeliculaFacade" scope="prototype"></bean>
+    <bean id="puntoDeVenta" class="com.facade.PuntoDeVentaFacade" scope="prototype"></bean>
+    <bean id="sala" class="com.facade.SalaFacade" scope="prototype"></bean>
+    <bean id="sede" class="com.facade.SedeFacade" scope="prototype"></bean>
+    <bean id="silla" class="com.facade.SillaFacade" scope="prototype"></bean>
 </beans>
