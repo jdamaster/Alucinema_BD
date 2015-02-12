@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSalaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSalaEmpty}" rendered="#{salaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{salaController.items.rowCount > 0}">
+                    <h:outputText value="#{salaController.pagination.pageFirstItem + 1}..#{salaController.pagination.pageLastItem + 1}/#{salaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{salaController.previous}" value="#{bundle.Previous} #{salaController.pagination.pageSize}" rendered="#{salaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{salaController.next}" value="#{bundle.Next} #{salaController.pagination.pageSize}" rendered="#{salaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{salaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSalaTitle_salaPK_idSala}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.salaPK.idSala}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSalaTitle_capacidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.capacidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSalaTitle_sede}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sede}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{salaController.prepareView}" value="#{bundle.ListSalaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{salaController.prepareEdit}" value="#{bundle.ListSalaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{salaController.destroy}" value="#{bundle.ListSalaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{salaController.prepareCreate}" value="#{bundle.ListSalaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSalaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

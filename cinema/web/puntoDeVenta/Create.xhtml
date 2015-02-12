@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePuntoDeVentaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePuntoDeVentaLabel_puntoDeVentaPK_idPunto}" for="puntoDeVentaPK_idPunto" />
+                    <h:inputText id="puntoDeVentaPK_idPunto" value="#{puntoDeVentaController.selected.puntoDeVentaPK.idPunto}" title="#{bundle.CreatePuntoDeVentaTitle_puntoDeVentaPK_idPunto}" required="true" requiredMessage="#{bundle.CreatePuntoDeVentaRequiredMessage_puntoDeVentaPK_idPunto}"/>
+                    <h:outputLabel value="#{bundle.CreatePuntoDeVentaLabel_administrador}" for="administrador" />
+                    <h:inputText id="administrador" value="#{puntoDeVentaController.selected.administrador}" title="#{bundle.CreatePuntoDeVentaTitle_administrador}" />
+                    <h:outputLabel value="#{bundle.CreatePuntoDeVentaLabel_sede}" for="sede" />
+                    <h:selectOneMenu id="sede" value="#{puntoDeVentaController.selected.sede}" title="#{bundle.CreatePuntoDeVentaTitle_sede}" required="true" requiredMessage="#{bundle.CreatePuntoDeVentaRequiredMessage_sede}">
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{puntoDeVentaController.create}" value="#{bundle.CreatePuntoDeVentaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{puntoDeVentaController.prepareList}" value="#{bundle.CreatePuntoDeVentaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePuntoDeVentaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

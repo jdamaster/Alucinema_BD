@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePeliculaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePeliculaLabel_idPelicula}" for="idPelicula" />
+                    <h:inputText id="idPelicula" value="#{peliculaController.selected.idPelicula}" title="#{bundle.CreatePeliculaTitle_idPelicula}" required="true" requiredMessage="#{bundle.CreatePeliculaRequiredMessage_idPelicula}"/>
+                    <h:outputLabel value="#{bundle.CreatePeliculaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{peliculaController.selected.nombre}" title="#{bundle.CreatePeliculaTitle_nombre}" required="true" requiredMessage="#{bundle.CreatePeliculaRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreatePeliculaLabel_genero}" for="genero" />
+                    <h:inputText id="genero" value="#{peliculaController.selected.genero}" title="#{bundle.CreatePeliculaTitle_genero}" required="true" requiredMessage="#{bundle.CreatePeliculaRequiredMessage_genero}"/>
+                    <h:outputLabel value="#{bundle.CreatePeliculaLabel_idioma}" for="idioma" />
+                    <h:inputText id="idioma" value="#{peliculaController.selected.idioma}" title="#{bundle.CreatePeliculaTitle_idioma}" required="true" requiredMessage="#{bundle.CreatePeliculaRequiredMessage_idioma}"/>
+                    <h:outputLabel value="#{bundle.CreatePeliculaLabel_subtitulada}" for="subtitulada" />
+                    <h:inputText id="subtitulada" value="#{peliculaController.selected.subtitulada}" title="#{bundle.CreatePeliculaTitle_subtitulada}" required="true" requiredMessage="#{bundle.CreatePeliculaRequiredMessage_subtitulada}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{peliculaController.create}" value="#{bundle.CreatePeliculaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{peliculaController.prepareList}" value="#{bundle.CreatePeliculaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePeliculaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

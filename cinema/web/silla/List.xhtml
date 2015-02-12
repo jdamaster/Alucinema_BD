@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSillaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSillaEmpty}" rendered="#{sillaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{sillaController.items.rowCount > 0}">
+                    <h:outputText value="#{sillaController.pagination.pageFirstItem + 1}..#{sillaController.pagination.pageLastItem + 1}/#{sillaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{sillaController.previous}" value="#{bundle.Previous} #{sillaController.pagination.pageSize}" rendered="#{sillaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{sillaController.next}" value="#{bundle.Next} #{sillaController.pagination.pageSize}" rendered="#{sillaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{sillaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSillaTitle_sillaPK_idSilla}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sillaPK.idSilla}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSillaTitle_numero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numero}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSillaTitle_tipo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSillaTitle_sala}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sala}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSillaTitle_sede}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sede}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{sillaController.prepareView}" value="#{bundle.ListSillaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sillaController.prepareEdit}" value="#{bundle.ListSillaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sillaController.destroy}" value="#{bundle.ListSillaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{sillaController.prepareCreate}" value="#{bundle.ListSillaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSillaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

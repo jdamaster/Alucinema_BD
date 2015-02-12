@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListBoletaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListBoletaEmpty}" rendered="#{boletaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{boletaController.items.rowCount > 0}">
+                    <h:outputText value="#{boletaController.pagination.pageFirstItem + 1}..#{boletaController.pagination.pageLastItem + 1}/#{boletaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{boletaController.previous}" value="#{bundle.Previous} #{boletaController.pagination.pageSize}" rendered="#{boletaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{boletaController.next}" value="#{bundle.Next} #{boletaController.pagination.pageSize}" rendered="#{boletaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{boletaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBoletaTitle_idBoleta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idBoleta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBoletaTitle_idSala}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSala}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBoletaTitle_idPelicula}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPelicula}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBoletaTitle_hora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hora}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBoletaTitle_idSede}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSede}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBoletaTitle_idSilla}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSilla}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBoletaTitle_idPunto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPunto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBoletaTitle_tipoDocumento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoDocumento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBoletaTitle_documento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.documento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBoletaTitle_pagada}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pagada}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{boletaController.prepareView}" value="#{bundle.ListBoletaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{boletaController.prepareEdit}" value="#{bundle.ListBoletaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{boletaController.destroy}" value="#{bundle.ListBoletaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{boletaController.prepareCreate}" value="#{bundle.ListBoletaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListBoletaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

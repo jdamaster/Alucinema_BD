@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFuncionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFuncionLabel_funcionPK_fecha}" for="funcionPK_fecha" />
+                    <h:inputText id="funcionPK_fecha" value="#{funcionController.selected.funcionPK.fecha}" title="#{bundle.EditFuncionTitle_funcionPK_fecha}" required="true" requiredMessage="#{bundle.EditFuncionRequiredMessage_funcionPK_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditFuncionLabel_duracion}" for="duracion" />
+                    <h:inputText id="duracion" value="#{funcionController.selected.duracion}" title="#{bundle.EditFuncionTitle_duracion}" required="true" requiredMessage="#{bundle.EditFuncionRequiredMessage_duracion}"/>
+                    <h:outputLabel value="#{bundle.EditFuncionLabel_calidad}" for="calidad" />
+                    <h:inputText id="calidad" value="#{funcionController.selected.calidad}" title="#{bundle.EditFuncionTitle_calidad}" required="true" requiredMessage="#{bundle.EditFuncionRequiredMessage_calidad}"/>
+                    <h:outputLabel value="#{bundle.EditFuncionLabel_tipo}" for="tipo" />
+                    <h:inputText id="tipo" value="#{funcionController.selected.tipo}" title="#{bundle.EditFuncionTitle_tipo}" required="true" requiredMessage="#{bundle.EditFuncionRequiredMessage_tipo}"/>
+                    <h:outputLabel value="#{bundle.EditFuncionLabel_sede}" for="sede" />
+                    <h:selectOneMenu id="sede" value="#{funcionController.selected.sede}" title="#{bundle.EditFuncionTitle_sede}" required="true" requiredMessage="#{bundle.EditFuncionRequiredMessage_sede}">
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFuncionLabel_pelicula}" for="pelicula" />
+                    <h:selectOneMenu id="pelicula" value="#{funcionController.selected.pelicula}" title="#{bundle.EditFuncionTitle_pelicula}" required="true" requiredMessage="#{bundle.EditFuncionRequiredMessage_pelicula}">
+                        <f:selectItems value="#{peliculaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFuncionLabel_sala}" for="sala" />
+                    <h:selectOneMenu id="sala" value="#{funcionController.selected.sala}" title="#{bundle.EditFuncionTitle_sala}" required="true" requiredMessage="#{bundle.EditFuncionRequiredMessage_sala}">
+                        <f:selectItems value="#{salaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{funcionController.update}" value="#{bundle.EditFuncionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFuncionViewLink}"/>
+                <br />
+                <h:commandLink action="#{funcionController.prepareList}" value="#{bundle.EditFuncionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFuncionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

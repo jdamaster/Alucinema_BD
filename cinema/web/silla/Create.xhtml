@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSillaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSillaLabel_sillaPK_idSilla}" for="sillaPK_idSilla" />
+                    <h:inputText id="sillaPK_idSilla" value="#{sillaController.selected.sillaPK.idSilla}" title="#{bundle.CreateSillaTitle_sillaPK_idSilla}" required="true" requiredMessage="#{bundle.CreateSillaRequiredMessage_sillaPK_idSilla}"/>
+                    <h:outputLabel value="#{bundle.CreateSillaLabel_numero}" for="numero" />
+                    <h:inputText id="numero" value="#{sillaController.selected.numero}" title="#{bundle.CreateSillaTitle_numero}" required="true" requiredMessage="#{bundle.CreateSillaRequiredMessage_numero}"/>
+                    <h:outputLabel value="#{bundle.CreateSillaLabel_tipo}" for="tipo" />
+                    <h:inputText id="tipo" value="#{sillaController.selected.tipo}" title="#{bundle.CreateSillaTitle_tipo}" required="true" requiredMessage="#{bundle.CreateSillaRequiredMessage_tipo}"/>
+                    <h:outputLabel value="#{bundle.CreateSillaLabel_sala}" for="sala" />
+                    <h:selectOneMenu id="sala" value="#{sillaController.selected.sala}" title="#{bundle.CreateSillaTitle_sala}" required="true" requiredMessage="#{bundle.CreateSillaRequiredMessage_sala}">
+                        <f:selectItems value="#{salaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSillaLabel_sede}" for="sede" />
+                    <h:selectOneMenu id="sede" value="#{sillaController.selected.sede}" title="#{bundle.CreateSillaTitle_sede}" required="true" requiredMessage="#{bundle.CreateSillaRequiredMessage_sede}">
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sillaController.create}" value="#{bundle.CreateSillaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sillaController.prepareList}" value="#{bundle.CreateSillaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSillaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

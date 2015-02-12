@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSillaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSillaLabel_sillaPK_idSilla}"/>
+                    <h:outputText value="#{sillaController.selected.sillaPK.idSilla}" title="#{bundle.ViewSillaTitle_sillaPK_idSilla}"/>
+                    <h:outputText value="#{bundle.ViewSillaLabel_numero}"/>
+                    <h:outputText value="#{sillaController.selected.numero}" title="#{bundle.ViewSillaTitle_numero}"/>
+                    <h:outputText value="#{bundle.ViewSillaLabel_tipo}"/>
+                    <h:outputText value="#{sillaController.selected.tipo}" title="#{bundle.ViewSillaTitle_tipo}"/>
+                    <h:outputText value="#{bundle.ViewSillaLabel_sala}"/>
+                    <h:outputText value="#{sillaController.selected.sala}" title="#{bundle.ViewSillaTitle_sala}"/>
+                    <h:outputText value="#{bundle.ViewSillaLabel_sede}"/>
+                    <h:outputText value="#{sillaController.selected.sede}" title="#{bundle.ViewSillaTitle_sede}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sillaController.destroyAndView}" value="#{bundle.ViewSillaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSillaEditLink}"/>
+                <br />
+                <h:commandLink action="#{sillaController.prepareCreate}" value="#{bundle.ViewSillaCreateLink}" />
+                <br />
+                <h:commandLink action="#{sillaController.prepareList}" value="#{bundle.ViewSillaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSillaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

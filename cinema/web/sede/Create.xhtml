@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_idSede}" for="idSede" />
+                    <h:inputText id="idSede" value="#{sedeController.selected.idSede}" title="#{bundle.CreateSedeTitle_idSede}" required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_idSede}"/>
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_ciudad}" for="ciudad" />
+                    <h:inputText id="ciudad" value="#{sedeController.selected.ciudad}" title="#{bundle.CreateSedeTitle_ciudad}" required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_ciudad}"/>
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{sedeController.selected.direccion}" title="#{bundle.CreateSedeTitle_direccion}" required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_direccion}"/>
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_estacionamiento}" for="estacionamiento" />
+                    <h:inputText id="estacionamiento" value="#{sedeController.selected.estacionamiento}" title="#{bundle.CreateSedeTitle_estacionamiento}" required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_estacionamiento}"/>
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_administrador}" for="administrador" />
+                    <h:inputText id="administrador" value="#{sedeController.selected.administrador}" title="#{bundle.CreateSedeTitle_administrador}" />
+                    <h:outputLabel value="#{bundle.CreateSedeLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{sedeController.selected.telefono}" title="#{bundle.CreateSedeTitle_telefono}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sedeController.create}" value="#{bundle.CreateSedeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sedeController.prepareList}" value="#{bundle.CreateSedeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSedeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

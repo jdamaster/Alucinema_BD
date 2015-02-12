@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBoletaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditBoletaLabel_idBoleta}" for="idBoleta" />
+                    <h:inputText id="idBoleta" value="#{boletaController.selected.idBoleta}" title="#{bundle.EditBoletaTitle_idBoleta}" required="true" requiredMessage="#{bundle.EditBoletaRequiredMessage_idBoleta}"/>
+                    <h:outputLabel value="#{bundle.EditBoletaLabel_idSala}" for="idSala" />
+                    <h:inputText id="idSala" value="#{boletaController.selected.idSala}" title="#{bundle.EditBoletaTitle_idSala}" required="true" requiredMessage="#{bundle.EditBoletaRequiredMessage_idSala}"/>
+                    <h:outputLabel value="#{bundle.EditBoletaLabel_idPelicula}" for="idPelicula" />
+                    <h:inputText id="idPelicula" value="#{boletaController.selected.idPelicula}" title="#{bundle.EditBoletaTitle_idPelicula}" required="true" requiredMessage="#{bundle.EditBoletaRequiredMessage_idPelicula}"/>
+                    <h:outputLabel value="#{bundle.EditBoletaLabel_hora}" for="hora" />
+                    <h:inputText id="hora" value="#{boletaController.selected.hora}" title="#{bundle.EditBoletaTitle_hora}" required="true" requiredMessage="#{bundle.EditBoletaRequiredMessage_hora}"/>
+                    <h:outputLabel value="#{bundle.EditBoletaLabel_idSede}" for="idSede" />
+                    <h:inputText id="idSede" value="#{boletaController.selected.idSede}" title="#{bundle.EditBoletaTitle_idSede}" required="true" requiredMessage="#{bundle.EditBoletaRequiredMessage_idSede}"/>
+                    <h:outputLabel value="#{bundle.EditBoletaLabel_idSilla}" for="idSilla" />
+                    <h:inputText id="idSilla" value="#{boletaController.selected.idSilla}" title="#{bundle.EditBoletaTitle_idSilla}" required="true" requiredMessage="#{bundle.EditBoletaRequiredMessage_idSilla}"/>
+                    <h:outputLabel value="#{bundle.EditBoletaLabel_idPunto}" for="idPunto" />
+                    <h:inputText id="idPunto" value="#{boletaController.selected.idPunto}" title="#{bundle.EditBoletaTitle_idPunto}" />
+                    <h:outputLabel value="#{bundle.EditBoletaLabel_tipoDocumento}" for="tipoDocumento" />
+                    <h:inputText id="tipoDocumento" value="#{boletaController.selected.tipoDocumento}" title="#{bundle.EditBoletaTitle_tipoDocumento}" required="true" requiredMessage="#{bundle.EditBoletaRequiredMessage_tipoDocumento}"/>
+                    <h:outputLabel value="#{bundle.EditBoletaLabel_documento}" for="documento" />
+                    <h:inputText id="documento" value="#{boletaController.selected.documento}" title="#{bundle.EditBoletaTitle_documento}" required="true" requiredMessage="#{bundle.EditBoletaRequiredMessage_documento}"/>
+                    <h:outputLabel value="#{bundle.EditBoletaLabel_pagada}" for="pagada" />
+                    <h:inputText id="pagada" value="#{boletaController.selected.pagada}" title="#{bundle.EditBoletaTitle_pagada}" required="true" requiredMessage="#{bundle.EditBoletaRequiredMessage_pagada}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{boletaController.update}" value="#{bundle.EditBoletaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditBoletaViewLink}"/>
+                <br />
+                <h:commandLink action="#{boletaController.prepareList}" value="#{bundle.EditBoletaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditBoletaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

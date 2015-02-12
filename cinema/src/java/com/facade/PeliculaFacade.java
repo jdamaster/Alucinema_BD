@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author Usuario
  */
 @Stateless
-public class PeliculaFacade extends AbstractFacade<Pelicula> implements PeliculaFacadeLocal {
+public class PeliculaFacade extends AbstractFacade<Pelicula> implements PeliculaFacadeLocal{
     @PersistenceContext(unitName = "cinemaPU")
     private EntityManager em;
 

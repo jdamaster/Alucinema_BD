@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPeliculaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPeliculaLabel_idPelicula}"/>
+                    <h:outputText value="#{peliculaController.selected.idPelicula}" title="#{bundle.ViewPeliculaTitle_idPelicula}"/>
+                    <h:outputText value="#{bundle.ViewPeliculaLabel_nombre}"/>
+                    <h:outputText value="#{peliculaController.selected.nombre}" title="#{bundle.ViewPeliculaTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewPeliculaLabel_genero}"/>
+                    <h:outputText value="#{peliculaController.selected.genero}" title="#{bundle.ViewPeliculaTitle_genero}"/>
+                    <h:outputText value="#{bundle.ViewPeliculaLabel_idioma}"/>
+                    <h:outputText value="#{peliculaController.selected.idioma}" title="#{bundle.ViewPeliculaTitle_idioma}"/>
+                    <h:outputText value="#{bundle.ViewPeliculaLabel_subtitulada}"/>
+                    <h:outputText value="#{peliculaController.selected.subtitulada}" title="#{bundle.ViewPeliculaTitle_subtitulada}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{peliculaController.destroyAndView}" value="#{bundle.ViewPeliculaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPeliculaEditLink}"/>
+                <br />
+                <h:commandLink action="#{peliculaController.prepareCreate}" value="#{bundle.ViewPeliculaCreateLink}" />
+                <br />
+                <h:commandLink action="#{peliculaController.prepareList}" value="#{bundle.ViewPeliculaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPeliculaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

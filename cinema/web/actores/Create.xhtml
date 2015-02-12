@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateActoresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateActoresLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{actoresController.selected.id}" title="#{bundle.CreateActoresTitle_id}" required="true" requiredMessage="#{bundle.CreateActoresRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateActoresLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{actoresController.selected.nombre}" title="#{bundle.CreateActoresTitle_nombre}" required="true" requiredMessage="#{bundle.CreateActoresRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreateActoresLabel_ciudad}" for="ciudad" />
+                    <h:inputText id="ciudad" value="#{actoresController.selected.ciudad}" title="#{bundle.CreateActoresTitle_ciudad}" required="true" requiredMessage="#{bundle.CreateActoresRequiredMessage_ciudad}"/>
+                    <h:outputLabel value="#{bundle.CreateActoresLabel_nacionalidad}" for="nacionalidad" />
+                    <h:inputText id="nacionalidad" value="#{actoresController.selected.nacionalidad}" title="#{bundle.CreateActoresTitle_nacionalidad}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{actoresController.create}" value="#{bundle.CreateActoresSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{actoresController.prepareList}" value="#{bundle.CreateActoresShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateActoresIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

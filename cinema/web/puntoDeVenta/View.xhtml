@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPuntoDeVentaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPuntoDeVentaLabel_puntoDeVentaPK_idPunto}"/>
+                    <h:outputText value="#{puntoDeVentaController.selected.puntoDeVentaPK.idPunto}" title="#{bundle.ViewPuntoDeVentaTitle_puntoDeVentaPK_idPunto}"/>
+                    <h:outputText value="#{bundle.ViewPuntoDeVentaLabel_administrador}"/>
+                    <h:outputText value="#{puntoDeVentaController.selected.administrador}" title="#{bundle.ViewPuntoDeVentaTitle_administrador}"/>
+                    <h:outputText value="#{bundle.ViewPuntoDeVentaLabel_sede}"/>
+                    <h:outputText value="#{puntoDeVentaController.selected.sede}" title="#{bundle.ViewPuntoDeVentaTitle_sede}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{puntoDeVentaController.destroyAndView}" value="#{bundle.ViewPuntoDeVentaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPuntoDeVentaEditLink}"/>
+                <br />
+                <h:commandLink action="#{puntoDeVentaController.prepareCreate}" value="#{bundle.ViewPuntoDeVentaCreateLink}" />
+                <br />
+                <h:commandLink action="#{puntoDeVentaController.prepareList}" value="#{bundle.ViewPuntoDeVentaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPuntoDeVentaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

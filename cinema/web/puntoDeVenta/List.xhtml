@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPuntoDeVentaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPuntoDeVentaEmpty}" rendered="#{puntoDeVentaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{puntoDeVentaController.items.rowCount > 0}">
+                    <h:outputText value="#{puntoDeVentaController.pagination.pageFirstItem + 1}..#{puntoDeVentaController.pagination.pageLastItem + 1}/#{puntoDeVentaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{puntoDeVentaController.previous}" value="#{bundle.Previous} #{puntoDeVentaController.pagination.pageSize}" rendered="#{puntoDeVentaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{puntoDeVentaController.next}" value="#{bundle.Next} #{puntoDeVentaController.pagination.pageSize}" rendered="#{puntoDeVentaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{puntoDeVentaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPuntoDeVentaTitle_puntoDeVentaPK_idPunto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.puntoDeVentaPK.idPunto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPuntoDeVentaTitle_administrador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.administrador}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPuntoDeVentaTitle_sede}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sede}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{puntoDeVentaController.prepareView}" value="#{bundle.ListPuntoDeVentaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{puntoDeVentaController.prepareEdit}" value="#{bundle.ListPuntoDeVentaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{puntoDeVentaController.destroy}" value="#{bundle.ListPuntoDeVentaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{puntoDeVentaController.prepareCreate}" value="#{bundle.ListPuntoDeVentaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPuntoDeVentaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
