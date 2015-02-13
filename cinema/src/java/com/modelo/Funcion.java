@@ -13,6 +13,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -62,7 +63,10 @@ public class Funcion implements Serializable {
     @JoinColumn(name = "idPelicula", referencedColumnName = "idPelicula", insertable = false, updatable = false)
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Pelicula pelicula;
-    @JoinColumn(name = "idSala", referencedColumnName = "idSala", insertable = false, updatable = false)
+     @JoinColumns({
+            @JoinColumn(name = "idSala", referencedColumnName = "idSala", insertable = false, updatable = false),
+            @JoinColumn(name = "idSede", referencedColumnName = "idSede", insertable = false, updatable = false)
+     })
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Sala sala;
 
